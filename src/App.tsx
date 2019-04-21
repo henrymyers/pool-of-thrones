@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import logo from './logo.svg';
+import 'materialize-css/dist/css/materialize.min.css';
 import './App.css';
+import { StateLoading, StateDisplayed, StateReady } from './components';
+import { Entry, Result } from './types';
 
 const sheetUrl =
     'https://spreadsheets.google.com/feeds/list/1F6niOY6NGLMFD0PxMITgZ0iThof5zVeCKSswuqRB0XE/1/public/values?alt=json';
 
-const mapRow = (row: any) => {
-    let result: any = {};
+const mapRow = (row: any): Result => {
+    let result = {} as Result;
 
     for (let prop in row) {
         if (prop.startsWith('gsx$')) {
@@ -19,7 +21,7 @@ const mapRow = (row: any) => {
     return result;
 };
 
-const addScores = (entries: any[], result: any) => {
+const addScores = (entries: Entry[], result: Result) => {
     if (!entries || !result) {
         return;
     }
@@ -53,7 +55,7 @@ const addScores = (entries: any[], result: any) => {
 
 const addRanks = (entries: any[]) => {
     let scores = entries.map(entry => entry.score);
-    scores = Array.from(new Set(scores)); // Keep only unique scores
+    // scores = Array.from(new Set(scores)); // Keep only unique scores
     scores = scores.sort((a, b) => b - a); // Sort in ascending order
 
     entries.forEach(entry => {
@@ -64,6 +66,11 @@ const addRanks = (entries: any[]) => {
 function App() {
     const [poolResult, setPoolResult] = useState();
     const [poolEntries, setPoolEntries] = useState();
+    const [showData, setShowData] = useState(false);
+
+    const toggleVisibility = () => {
+        setShowData(!showData);
+    };
 
     useEffect(() => {
         fetch(sheetUrl)
@@ -80,23 +87,17 @@ function App() {
                 let entries = allRows.slice(1);
                 addScores(entries, result);
                 addRanks(entries);
-                setPoolEntries(entries.sort((a, b) => a.score - b.score));
-
-                console.log('>>>> result = ', result); // **********
-                console.log('>>>> entries = ', entries); // **********
+                entries = entries.sort((a, b) => a.rank - b.rank);
+                setPoolEntries(entries);
             });
     }, []);
 
     return (
-        <div className="App">
-            {!poolEntries && (
-                <header className="App-header">
-                    <img src={logo} className="App-logo" alt="logo" />
-                    <p>Loading predictions...</p>
-                </header>
-            )}
-            {poolEntries && <section>{JSON.stringify(poolEntries)}</section>}
-        </div>
+        <main className="container">
+            {!poolEntries && <StateLoading />}
+            {/*{poolEntries && !showData && <StateReady onToggle={toggleVisibility} />}*/}
+            {poolEntries && <StateDisplayed result={poolResult} entries={poolEntries} />}
+        </main>
     );
 }
 
