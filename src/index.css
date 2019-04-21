@@ -8,7 +8,7 @@
 }
 
 .primary {
-  background-color: #32cbcb !important;
+  background-color: #5bd5d5 !important;
 }
 
 .warning {
@@ -16,5 +16,34 @@
 }
 
 .danger {
-  background-color: #e11534 !important;
+  background-color: #f8645c !important;
+}
+
+.success {
+  background-color: #71d9a3 !important;
+}
+
+.tag {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 13px;
+  line-height: 36px;
+  overflow: hidden;
+  padding: 0 16px;
+  border-radius: 3px;
+  margin: 5px 5px 5px 0;
+  border: 2px solid #7f7f7f;
+  color: #7f7f7f;
+}
+.tag.correct {
+  border-color: #71d9a3;
+  color: #71d9a3;
+}
+.tag.incorrect {
+  border-color: #f8645c;
+  color: #f8645c;
+}
+.tag > i {
+  line-height: inherit;
 }

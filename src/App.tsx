@@ -3,6 +3,7 @@ import 'materialize-css/dist/css/materialize.min.css';
 import './App.css';
 import { StateLoading, StateDisplayed, StateReady } from './components';
 import { Entry, Result } from './types';
+import M from 'materialize-css';
 
 const sheetUrl =
     'https://spreadsheets.google.com/feeds/list/1F6niOY6NGLMFD0PxMITgZ0iThof5zVeCKSswuqRB0XE/1/public/values?alt=json';
@@ -54,9 +55,7 @@ const addScores = (entries: Entry[], result: Result) => {
 };
 
 const addRanks = (entries: any[]) => {
-    let scores = entries.map(entry => entry.score);
-    // scores = Array.from(new Set(scores)); // Keep only unique scores
-    scores = scores.sort((a, b) => b - a); // Sort in ascending order
+    let scores = entries.map(e => e.score).sort((a, b) => b - a); // Sort in ascending order
 
     entries.forEach(entry => {
         entry.rank = scores.indexOf(entry.score) + 1;
@@ -89,13 +88,18 @@ function App() {
                 addRanks(entries);
                 entries = entries.sort((a, b) => a.rank - b.rank);
                 setPoolEntries(entries);
+                setShowData(true);
             });
     }, []);
+
+    useEffect(() => {
+        M.AutoInit(); // Material CSS components
+    }, [showData]);
 
     return (
         <main className="container">
             {!poolEntries && <StateLoading />}
-            {/*{poolEntries && !showData && <StateReady onToggle={toggleVisibility} />}*/}
+            {poolEntries && !showData && <StateReady onToggle={toggleVisibility} />}
             {poolEntries && <StateDisplayed result={poolResult} entries={poolEntries} />}
         </main>
     );

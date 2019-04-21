@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Entry, Result, Status } from '../types';
-import M from 'materialize-css';
+import { Prediction } from './Prediction';
+import './EntryRow.css';
 
-const characterFields: (keyof Result)[] = [
+const characters: (keyof Result)[] = [
     'jonsnow',
     'sansastark',
     'aryastark',
@@ -31,120 +32,61 @@ const characterFields: (keyof Result)[] = [
     'gendry',
 ];
 
-const fields: any = {
-    jonsnow: 'Jon Snow',
-    sansastark: 'Sansa Stark',
-    aryastark: 'Arya Stark',
-    branstark: 'Bran Stark',
-    cerseilannister: 'Cersei Lannister',
-    jaimelannister: 'Jaime Lannister',
-    tyrionlannister: 'Tyrion Lannister',
-    daenerystargaryen: 'Daenerys Lannister',
-    yaragreyjoy: 'Yara Greyjoy',
-    theongreyjoy: 'Theon Greyjoy',
-    eurongreyjoy: 'Euron Greyjoy',
-    melisandre: 'Melisandre',
-    jorahmormont: 'Jorah Mormont',
-    thehound: 'The Hound',
-    themountain: 'The Mountain',
-    samwelltarly: 'Samwell Tarly',
-    gilly: 'Gilly',
-    littlesam: 'Little Sam',
-    varys: 'Varys',
-    brienne: 'Brienne',
-    davos: 'Davos',
-    bronn: 'Bronn',
-    podrick: 'Podrick',
-    tormund: 'Tormund',
-    greyworm: 'Grey Worm',
-    gendry: 'Gendry',
-    bericdondarrion: 'Beric Dondarrion',
-    isdaeneryspregnant: 'Is Daenerys pregnant?',
-    whokillsthenightking: 'Who kills the night king?',
-    whoendsupontheironthrone: 'Who ends up on the Iron Throne?',
-};
-
-export const CharacterList = ({
-    title,
-    characters,
-}: {
-    title: string;
-    characters: (keyof Result)[];
-}) => {
-    return (
-        <table className="striped">
-            <thead>
-                <tr>
-                    <th>{title}</th>
-                </tr>
-            </thead>
-            <tbody>
-                {characters.map((character, index) => (
-                    <tr key={index}>
-                        <td>{fields[character]}</td>
-                    </tr>
-                ))}
-            </tbody>
-        </table>
-    );
-};
-
-export const EntryRow = ({ entry }: { entry: Entry }) => {
-    useEffect(() => {
-        M.AutoInit(); // Material CSS components
-    }, []);
-
-    const lives = characterFields.filter(f => entry[f] === Status.Lives);
-    const deaths = characterFields.filter(f => entry[f] === Status.Dies);
-    const walkers = characterFields.filter(f => entry[f] === Status.WhiteWalker);
+export const EntryRow = ({ entry, result }: { entry: Entry; result: Result }) => {
+    const lives = characters.filter(f => entry[f] === Status.Lives);
+    const deaths = characters.filter(f => entry[f] === Status.Dies);
+    const walkers = characters.filter(f => entry[f] === Status.WhiteWalker);
 
     return (
-        <ul className="collapsible expandable no-border">
+        <ul className="collapsible no-border">
             <li>
-                <div className="collapsible-header primary white-text no-border">
-                    <strong>
-                        {entry.rank}. {entry.player}
-                    </strong>
+                <div className="collapsible-header primary hoverable white-text no-border valign-wrapper">
+                    <span className="entry-rank neutral z-depth-2">{entry.rank}</span>
+                    <span className="entry-name">{entry.player}</span>
                     <span className="badge white-text">
                         {entry.score} {entry.score > 1 ? 'points' : 'point'}
                     </span>
                 </div>
                 <div className="collapsible-body white no-border">
-                    <h5>Predictions</h5>
-
-                    <div className="row">
-                        <div className="col s12 m4">
-                            <CharacterList title={Status.Lives} characters={lives} />
-                        </div>
-                        <div className="col s12 m4">
-                            <CharacterList title={Status.Dies} characters={deaths} />
-                        </div>
-                        <div className="col s12 m4">
-                            <CharacterList title={Status.WhiteWalker} characters={walkers} />
-                        </div>
-                    </div>
-
-                    <table className="striped">
-                        <thead>
-                            <tr>
-                                <th>Bonus</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>{fields.isdaeneryspregnant}</td>
-                                <td>{entry.isdaeneryspregnant}</td>
-                            </tr>
-                            <tr>
-                                <td>{fields.whokillsthenightking}</td>
-                                <td>{entry.whokillsthenightking}</td>
-                            </tr>
-                            <tr>
-                                <td>{fields.whoendsupontheironthrone}</td>
-                                <td>{entry.whoendsupontheironthrone}</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <Prediction
+                        question="Who lives?"
+                        keys={lives}
+                        showKey={true}
+                        entry={entry}
+                        result={result}
+                    />
+                    <Prediction
+                        question="Who dies?"
+                        keys={deaths}
+                        showKey={true}
+                        entry={entry}
+                        result={result}
+                    />
+                    <Prediction
+                        question="Who becomes a white walker?"
+                        keys={walkers}
+                        showKey={true}
+                        entry={entry}
+                        result={result}
+                    />
+                    <Prediction
+                        question="Is Daenerys pregnant?"
+                        keys={['isdaeneryspregnant']}
+                        entry={entry}
+                        result={result}
+                    />
+                    <Prediction
+                        question="Who kills the night king?"
+                        keys={['whokillsthenightking']}
+                        entry={entry}
+                        result={result}
+                    />
+                    <Prediction
+                        question="Who ends up on the Iron Throne?"
+                        keys={['whoendsupontheironthrone']}
+                        entry={entry}
+                        result={result}
+                    />
                 </div>
             </li>
         </ul>

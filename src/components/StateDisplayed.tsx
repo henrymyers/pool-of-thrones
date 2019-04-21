@@ -6,7 +6,7 @@ export const StateDisplayed = ({ result, entries }: { result: Result; entries: E
     return (
         <div>
             {entries.map((item, index: number) => (
-                <EntryRow entry={item} key={index} />
+                <EntryRow entry={item} result={result} key={index} />
             ))}
         </div>
     );
