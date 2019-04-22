@@ -50,6 +50,7 @@ export const EntryRow = ({ entry, result }: { entry: Entry; result: Result }) =>
                 <div className="collapsible-body white no-border">
                     <Prediction
                         question="Who dies?"
+                        points="1pt per correct answer"
                         keys={deaths}
                         showKey={true}
                         entry={entry}
@@ -57,6 +58,7 @@ export const EntryRow = ({ entry, result }: { entry: Entry; result: Result }) =>
                     />
                     <Prediction
                         question="Who becomes a white walker?"
+                        points="2pts per correct answer"
                         keys={walkers}
                         showKey={true}
                         entry={entry}
@@ -64,6 +66,7 @@ export const EntryRow = ({ entry, result }: { entry: Entry; result: Result }) =>
                     />
                     <Prediction
                         question="Who lives?"
+                        points="1pt per correct answer"
                         keys={lives}
                         showKey={true}
                         entry={entry}
@@ -71,18 +74,21 @@ export const EntryRow = ({ entry, result }: { entry: Entry; result: Result }) =>
                     />
                     <Prediction
                         question="Is Daenerys pregnant?"
+                        points="1pt if correct"
                         keys={['isdaeneryspregnant']}
                         entry={entry}
                         result={result}
                     />
                     <Prediction
                         question="Who kills the night king?"
+                        points="2pts if correct"
                         keys={['whokillsthenightking']}
                         entry={entry}
                         result={result}
                     />
                     <Prediction
                         question="Who ends up on the Iron Throne?"
+                        points="4pts if correct"
                         keys={['whoendsupontheironthrone']}
                         entry={entry}
                         result={result}

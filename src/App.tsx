@@ -122,7 +122,7 @@ function App() {
                     </div>
                 )}
             </header>
-            <main className="container u-mt">
+            <main className="container u-mt" style={{ marginBottom: '6vh' }}>
                 {poolEntries &&
                     showData &&
                     poolEntries.map((item: Entry, index: number) => (

@@ -37,12 +37,20 @@ export const Copydeck: any = {
 export type PredictionProps = {
     question: string;
     keys: (keyof Result)[];
+    points: string;
     showKey?: boolean;
     entry: Entry;
     result: Result;
 };
 
-export const Prediction = ({ question, keys, showKey = false, entry, result }: PredictionProps) => {
+export const Prediction = ({
+    question,
+    keys,
+    points,
+    showKey = false,
+    entry,
+    result,
+}: PredictionProps) => {
     const getValidity = (key: keyof Result): Validity => {
         if (!result[key]) {
             return Validity.unknown;
@@ -55,7 +63,17 @@ export const Prediction = ({ question, keys, showKey = false, entry, result }: P
 
     return (
         <div className="prediction">
-            <h6>{question}</h6>
+            <h6 className="valign-wrapper" style={{ lineHeight: '1' }}>
+                {question}
+                <i
+                    className="material-icons tooltipped grey-text"
+                    style={{ marginLeft: '10px' }}
+                    data-position="top"
+                    data-tooltip={points}
+                >
+                    info_outline
+                </i>
+            </h6>
             <div>
                 {keys.length > 0 &&
                     keys.map((k, index) => (
