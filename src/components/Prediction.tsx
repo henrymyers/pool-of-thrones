@@ -1,4 +1,4 @@
-import { Entry, Result } from '../types';
+import { Entry, Result, Status } from '../types';
 import React from 'react';
 
 export const Copydeck: any = {
@@ -55,6 +55,8 @@ export const Prediction = ({
         if (!result[key]) {
             return Validity.unknown;
         } else if (result[key] === entry[key]) {
+            return Validity.correct;
+        } else if (result[key] === Status.WhiteWalker && entry[key] === Status.Dies) {
             return Validity.correct;
         } else {
             return Validity.incorrect;

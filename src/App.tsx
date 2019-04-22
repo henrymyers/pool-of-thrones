@@ -3,7 +3,7 @@ import M from 'materialize-css';
 import 'materialize-css/dist/css/materialize.min.css';
 import './App.css';
 import logo from './logo.png';
-import { Entry, Result } from './types';
+import { Entry, Result, Status } from './types';
 import { EntryRow } from './components';
 
 const sheetUrl =
@@ -32,21 +32,27 @@ const addScores = (entries: Entry[], result: Result) => {
         let score = 0;
 
         for (let prop in result) {
-            if (result.hasOwnProperty(prop) && result[prop] === entry[prop]) {
-                if (prop === 'whoendsupontheironthrone') {
-                    score += 4;
-                } else if (prop === 'whokillsthenightking') {
-                    score += 2;
-                } else if (prop === 'isdaeneryspregnant') {
-                    score += 1;
-                } else {
-                    switch (entry[prop]) {
-                        case 'White Walker':
-                            score += 2;
-                            break;
-                        default:
-                            score += 1;
+            if (result.hasOwnProperty(prop)) {
+                if (result[prop] === entry[prop]) {
+                    if (prop === 'whoendsupontheironthrone') {
+                        // Correctly predicted who won the game of thrones
+                        score += 4;
+                    } else if (prop === 'whokillsthenightking') {
+                        // Correctly predicted the night king's killer
+                        score += 2;
+                    } else if (prop === 'isdaeneryspregnant') {
+                        // Correctly predicted pregnancy
+                        score += 1;
+                    } else if (entry[prop] === Status.WhiteWalker) {
+                        // Correctly predicted White Walker
+                        score += 2;
+                    } else {
+                        // Default value for matching answers
+                        score += 1;
                     }
+                } else if (result[prop] === Status.WhiteWalker && entry[prop] === Status.Dies) {
+                    // White walkers also count as deaths
+                    score += 1;
                 }
             }
         }
@@ -98,7 +104,7 @@ function App() {
 
     return (
         <>
-            <header style={{ paddingTop: showData ? '6vh' : '40vh' }}>
+            <header style={{ paddingTop: showData ? '6vh' : '30vh' }}>
                 <img src={logo} className="logo" alt="logo" />
                 {!poolEntries && (
                     <div>
