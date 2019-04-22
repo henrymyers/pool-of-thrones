@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/pool-of-thrones/precache-manifest.f0ff776ee323257cb870f4ce0bd2c1f4.js"
+  "/pool-of-thrones/precache-manifest.d8254043748781bf0d51fad70dc0f601.js"
 );
 
 workbox.clientsClaim();
