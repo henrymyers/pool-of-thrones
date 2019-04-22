@@ -12,3 +12,7 @@
   font-size: 16px;
   font-weight: 500;
 }
+
+.prediction:not(:first-of-type) {
+  padding-top: 5px;
+}

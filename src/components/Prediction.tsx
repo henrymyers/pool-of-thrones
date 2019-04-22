@@ -54,16 +54,18 @@ export const Prediction = ({ question, keys, showKey = false, entry, result }: P
     };
 
     return (
-        <div style={{ marginBottom: '20px' }}>
+        <div className="prediction">
             <h6>{question}</h6>
             <div>
-                {keys.map((k, index) => (
-                    <Answer
-                        key={index}
-                        text={showKey ? Copydeck[k] : entry[k]}
-                        validity={getValidity(k)}
-                    />
-                ))}
+                {keys.length > 0 &&
+                    keys.map((k, index) => (
+                        <Answer
+                            key={index}
+                            text={showKey ? Copydeck[k] : entry[k]}
+                            validity={getValidity(k)}
+                        />
+                    ))}
+                {!keys.length && <div className="grey-text">No one</div>}
             </div>
         </div>
     );

@@ -49,13 +49,6 @@ export const EntryRow = ({ entry, result }: { entry: Entry; result: Result }) =>
                 </div>
                 <div className="collapsible-body white no-border">
                     <Prediction
-                        question="Who lives?"
-                        keys={lives}
-                        showKey={true}
-                        entry={entry}
-                        result={result}
-                    />
-                    <Prediction
                         question="Who dies?"
                         keys={deaths}
                         showKey={true}
@@ -65,6 +58,13 @@ export const EntryRow = ({ entry, result }: { entry: Entry; result: Result }) =>
                     <Prediction
                         question="Who becomes a white walker?"
                         keys={walkers}
+                        showKey={true}
+                        entry={entry}
+                        result={result}
+                    />
+                    <Prediction
+                        question="Who lives?"
+                        keys={lives}
                         showKey={true}
                         entry={entry}
                         result={result}

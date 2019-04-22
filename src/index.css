@@ -2,13 +2,17 @@
   border: none !important;
 }
 
+.u-mt {
+  margin-top: 15px !important;
+}
+
 /*LANDR colors*/
 .neutral {
   background-color: #0c1b2b !important;
 }
 
 .primary {
-  background-color: #5bd5d5 !important;
+  background-color: #32cbcb !important;
 }
 
 .warning {
@@ -17,6 +21,9 @@
 
 .danger {
   background-color: #f8645c !important;
+}
+.danger-text {
+  color: #f8645c !important;
 }
 
 .success {
@@ -46,4 +53,9 @@
 }
 .tag > i {
   line-height: inherit;
+}
+
+.collapsible {
+  overflow: hidden;
+  border-radius: 4px;
 }
