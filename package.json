@@ -3,12 +3,14 @@
     "version": "0.1.0",
     "private": true,
     "license": "MIT",
+    "homepage": "https://henrymyers.github.io/pool-of-thrones",
     "dependencies": {
         "@types/jest": "24.0.11",
+        "@types/materialize-css": "^1.0.6",
         "@types/node": "11.13.5",
         "@types/react": "16.8.13",
         "@types/react-dom": "16.8.4",
-        "@types/materialize-css": "^1.0.6",
+        "gh-pages": "^2.0.1",
         "materialize-css": "^1.0.0",
         "react": "^16.8.6",
         "react-dom": "^16.8.6",
@@ -42,6 +44,8 @@
         "*.scss": "stylelint"
     },
     "scripts": {
+        "predeploy": "yarn build",
+        "deploy": "gh-pages -d build",
         "start": "react-scripts start",
         "build": "react-scripts build",
         "test": "react-scripts test",
