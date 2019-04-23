@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import M from 'materialize-css';
+import { AutoInit as initMaterialComponents } from 'materialize-css';
 import 'materialize-css/dist/css/materialize.min.css';
 import './App.css';
 import logo from './logo.png';
@@ -99,7 +99,7 @@ function App() {
     }, []);
 
     useEffect(() => {
-        M.AutoInit(); // Material CSS components
+        initMaterialComponents(); // Material CSS components
     }, [showData]);
 
     return (
