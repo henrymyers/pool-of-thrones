@@ -8,23 +8,23 @@ self.__precacheManifest = [
     "url": "/pool-of-thrones/static/js/runtime~main.947ce9ff.js"
   },
   {
-    "revision": "ac3bfd81c7c54c71ba64",
-    "url": "/pool-of-thrones/static/js/main.67d2ff91.chunk.js"
+    "revision": "aa4c173f4cbffb9208a7",
+    "url": "/pool-of-thrones/static/js/main.d9cfacff.chunk.js"
   },
   {
-    "revision": "59c8c4ef1a695b9f41e0",
-    "url": "/pool-of-thrones/static/js/2.26c8a8d0.chunk.js"
+    "revision": "6a836cc9f9d3af0510bf",
+    "url": "/pool-of-thrones/static/js/2.eb87a330.chunk.js"
   },
   {
-    "revision": "ac3bfd81c7c54c71ba64",
+    "revision": "aa4c173f4cbffb9208a7",
     "url": "/pool-of-thrones/static/css/main.5eefa465.chunk.css"
   },
   {
-    "revision": "59c8c4ef1a695b9f41e0",
+    "revision": "6a836cc9f9d3af0510bf",
     "url": "/pool-of-thrones/static/css/2.b653801d.chunk.css"
   },
   {
-    "revision": "2bc9b3be09748a3c5288d76f0bddf30a",
+    "revision": "e9e4c2fdfa8f8255b40602d9772f39a4",
     "url": "/pool-of-thrones/index.html"
   }
 ];
