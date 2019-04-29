@@ -30,6 +30,7 @@ const characters: (keyof Result)[] = [
     'tormund',
     'greyworm',
     'gendry',
+    'bericdondarrion',
 ];
 
 export const EntryRow = ({ entry, result }: { entry: Entry; result: Result }) => {
