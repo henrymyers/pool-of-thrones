@@ -1,4 +1,4 @@
-import { Entry, Result, Status } from '../types';
+import { Entry, Result } from '../types';
 import React from 'react';
 
 export const Copydeck: any = {
@@ -41,6 +41,7 @@ export type PredictionProps = {
     showKey?: boolean;
     entry: Entry;
     result: Result;
+    customRule?: (k: keyof Result) => Validity | null;
 };
 
 export const Prediction = ({
@@ -50,13 +51,22 @@ export const Prediction = ({
     showKey = false,
     entry,
     result,
+    customRule,
 }: PredictionProps) => {
     const getValidity = (key: keyof Result): Validity => {
+        // Custom rule allows for a question-specific check.
+        if (customRule) {
+            const validity = customRule(key);
+            if (validity) {
+                return validity;
+            }
+        }
+
         if (!result[key]) {
+            // Result isn't decided yet
             return Validity.unknown;
         } else if (result[key] === entry[key]) {
-            return Validity.correct;
-        } else if (result[key] === Status.WhiteWalker && entry[key] === Status.Dies) {
+            // Answer matches result
             return Validity.correct;
         } else {
             return Validity.incorrect;

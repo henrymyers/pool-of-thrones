@@ -1,6 +1,6 @@
 import React from 'react';
 import { Entry, Result, Status } from '../types';
-import { Prediction } from './Prediction';
+import { Copydeck, Prediction, Validity } from './Prediction';
 import './EntryRow.css';
 
 const characters: (keyof Result)[] = [
@@ -56,6 +56,12 @@ export const EntryRow = ({ entry, result }: { entry: Entry; result: Result }) =>
                         showKey={true}
                         entry={entry}
                         result={result}
+                        customRule={(k: keyof Result) => {
+                            // Whitewalkers also count as deaths
+                            return result[k] === Status.WhiteWalker && entry[k] === Status.Dies
+                                ? Validity.correct
+                                : null;
+                        }}
                     />
                     <Prediction
                         question="Who becomes a white walker?"
@@ -64,6 +70,12 @@ export const EntryRow = ({ entry, result }: { entry: Entry; result: Result }) =>
                         showKey={true}
                         entry={entry}
                         result={result}
+                        customRule={(k: keyof Result) => {
+                            // There will be no more new white walkers from now on.
+                            return !result[k] && entry[k] === Status.WhiteWalker
+                                ? Validity.incorrect
+                                : null;
+                        }}
                     />
                     <Prediction
                         question="Who lives?"
@@ -93,6 +105,12 @@ export const EntryRow = ({ entry, result }: { entry: Entry; result: Result }) =>
                         keys={['whoendsupontheironthrone']}
                         entry={entry}
                         result={result}
+                        customRule={(k: keyof Result) => {
+                            // If the predicted ruler has already died, mark as incorrect.
+                            return !result[k] && deaths.find(d => Copydeck[d] === entry[k])
+                                ? Validity.incorrect
+                                : null;
+                        }}
                     />
                 </div>
             </li>
