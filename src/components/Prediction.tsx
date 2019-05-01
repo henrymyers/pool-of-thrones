@@ -1,38 +1,6 @@
-import { Entry, Result } from '../types';
 import React from 'react';
-
-export const Copydeck: any = {
-    jonsnow: 'Jon Snow',
-    sansastark: 'Sansa Stark',
-    aryastark: 'Arya Stark',
-    branstark: 'Bran Stark',
-    cerseilannister: 'Cersei Lannister',
-    jaimelannister: 'Jaime Lannister',
-    tyrionlannister: 'Tyrion Lannister',
-    daenerystargaryen: 'Daenerys Lannister',
-    yaragreyjoy: 'Yara Greyjoy',
-    theongreyjoy: 'Theon Greyjoy',
-    eurongreyjoy: 'Euron Greyjoy',
-    melisandre: 'Melisandre',
-    jorahmormont: 'Jorah Mormont',
-    thehound: 'The Hound',
-    themountain: 'The Mountain',
-    samwelltarly: 'Samwell Tarly',
-    gilly: 'Gilly',
-    littlesam: 'Little Sam',
-    varys: 'Varys',
-    brienne: 'Brienne',
-    davos: 'Davos',
-    bronn: 'Bronn',
-    podrick: 'Podrick',
-    tormund: 'Tormund',
-    greyworm: 'Grey Worm',
-    gendry: 'Gendry',
-    bericdondarrion: 'Beric Dondarrion',
-    isdaeneryspregnant: 'Is Daenerys pregnant?',
-    whokillsthenightking: 'Who kills the night king?',
-    whoendsupontheironthrone: 'Who ends up on the Iron Throne?',
-};
+import { Entry, Result, Validity } from '../types';
+import { Copydeck } from './copydeck';
 
 export type PredictionProps = {
     question: string;
@@ -100,12 +68,6 @@ export const Prediction = ({
         </div>
     );
 };
-
-export enum Validity {
-    correct = 'correct',
-    incorrect = 'incorrect',
-    unknown = 'unknown',
-}
 
 export type AnswerProps = {
     text: string;

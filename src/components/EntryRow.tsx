@@ -1,6 +1,7 @@
 import React from 'react';
-import { Entry, Result, Status } from '../types';
-import { Copydeck, Prediction, Validity } from './Prediction';
+import { Entry, Result, Status, Validity } from '../types';
+import { Copydeck } from './copydeck';
+import { Prediction } from './Prediction';
 import './EntryRow.css';
 
 const characters: (keyof Result)[] = [
@@ -70,12 +71,6 @@ export const EntryRow = ({ entry, result }: { entry: Entry; result: Result }) =>
                         showKey={true}
                         entry={entry}
                         result={result}
-                        customRule={(k: keyof Result) => {
-                            // There will be no more new white walkers from now on.
-                            return !result[k] && entry[k] === Status.WhiteWalker
-                                ? Validity.incorrect
-                                : null;
-                        }}
                     />
                     <Prediction
                         question="Who lives?"

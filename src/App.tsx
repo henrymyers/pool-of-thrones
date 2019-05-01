@@ -33,26 +33,32 @@ const addScores = (entries: Entry[], result: Result) => {
 
         for (let prop in result) {
             if (result.hasOwnProperty(prop)) {
-                if (result[prop] === entry[prop]) {
+                const prediction = entry[prop];
+                const reality = result[prop];
+
+                if (prediction === Status.WhiteWalker) {
+                    if (reality === prediction) {
+                        // Correct WW predictions are worth 2 points (1 for DEATH, 1 for WW)
+                        score += 2;
+                    } else if (reality === Status.Lives) {
+                        // Incorrect WW predictions cost 1 point
+                        score -= 1;
+                    }
+                    // Otherwise, the DEATH and WW points cancel each other, so 0 points.
+                } else if (prediction === Status.Dies && reality === Status.WhiteWalker) {
+                    // WW also counts for DEATH predictions
+                    score += 1;
+                } else if (prediction === reality) {
                     if (prop === 'whoendsupontheironthrone') {
                         // Correctly predicted who won the game of thrones
                         score += 4;
                     } else if (prop === 'whokillsthenightking') {
                         // Correctly predicted the night king's killer
                         score += 2;
-                    } else if (prop === 'isdaeneryspregnant') {
-                        // Correctly predicted pregnancy
-                        score += 1;
-                    } else if (entry[prop] === Status.WhiteWalker) {
-                        // Correctly predicted White Walker
-                        score += 2;
                     } else {
                         // Default value for matching answers
                         score += 1;
                     }
-                } else if (result[prop] === Status.WhiteWalker && entry[prop] === Status.Dies) {
-                    // White walkers also count as deaths
-                    score += 1;
                 }
             }
         }

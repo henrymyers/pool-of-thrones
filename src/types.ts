@@ -5,6 +5,12 @@ export enum Status {
     WhiteWalker = 'White Walker',
 }
 
+export enum Validity {
+    correct = 'correct',
+    incorrect = 'incorrect',
+    unknown = 'unknown',
+}
+
 export type Result = {
     [index: string]: any;
     player: string;
