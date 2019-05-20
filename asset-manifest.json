@@ -1,16 +1,16 @@
 {
-  "main.css": "/pool-of-thrones/static/css/main.465f0c56.chunk.css",
-  "main.js": "/pool-of-thrones/static/js/main.7036dc6b.chunk.js",
-  "main.js.map": "/pool-of-thrones/static/js/main.7036dc6b.chunk.js.map",
+  "main.css": "/pool-of-thrones/static/css/main.ae02a142.chunk.css",
+  "main.js": "/pool-of-thrones/static/js/main.8aa868cd.chunk.js",
+  "main.js.map": "/pool-of-thrones/static/js/main.8aa868cd.chunk.js.map",
   "runtime~main.js": "/pool-of-thrones/static/js/runtime~main.947ce9ff.js",
   "runtime~main.js.map": "/pool-of-thrones/static/js/runtime~main.947ce9ff.js.map",
   "static/css/2.b653801d.chunk.css": "/pool-of-thrones/static/css/2.b653801d.chunk.css",
   "static/js/2.eb87a330.chunk.js": "/pool-of-thrones/static/js/2.eb87a330.chunk.js",
   "static/js/2.eb87a330.chunk.js.map": "/pool-of-thrones/static/js/2.eb87a330.chunk.js.map",
   "index.html": "/pool-of-thrones/index.html",
-  "precache-manifest.442c34a6f34a2b6f1af45f6eb424a2c2.js": "/pool-of-thrones/precache-manifest.442c34a6f34a2b6f1af45f6eb424a2c2.js",
+  "precache-manifest.34278ab4ecfec713f7504459aaa222a0.js": "/pool-of-thrones/precache-manifest.34278ab4ecfec713f7504459aaa222a0.js",
   "service-worker.js": "/pool-of-thrones/service-worker.js",
   "static/css/2.b653801d.chunk.css.map": "/pool-of-thrones/static/css/2.b653801d.chunk.css.map",
-  "static/css/main.465f0c56.chunk.css.map": "/pool-of-thrones/static/css/main.465f0c56.chunk.css.map",
+  "static/css/main.ae02a142.chunk.css.map": "/pool-of-thrones/static/css/main.ae02a142.chunk.css.map",
   "static/media/logo.png": "/pool-of-thrones/static/media/logo.8583e1a5.png"
 }
