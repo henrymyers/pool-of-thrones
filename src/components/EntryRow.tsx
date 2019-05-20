@@ -38,12 +38,19 @@ export const EntryRow = ({ entry, result }: { entry: Entry; result: Result }) =>
     const lives = characters.filter(f => entry[f] === Status.Lives);
     const deaths = characters.filter(f => entry[f] === Status.Dies);
     const walkers = characters.filter(f => entry[f] === Status.WhiteWalker);
+    const colorClass = entry.rank === 1 ? 'warning' : 'primary';
 
     return (
         <ul className="collapsible no-border">
             <li>
-                <div className="collapsible-header primary hoverable white-text no-border valign-wrapper">
-                    <span className="entry-rank neutral z-depth-2">{entry.rank}</span>
+                <div
+                    className={`collapsible-header ${colorClass} hoverable white-text no-border valign-wrapper`}
+                >
+                    {entry.rank === 1 ? (
+                        <span className="entry-rank neutral warning-text z-depth-2">♛</span>
+                    ) : (
+                        <span className="entry-rank neutral z-depth-2">{entry.rank}</span>
+                    )}
                     <span className="entry-name">{entry.player}</span>
                     <span className="badge white-text">
                         {entry.score} {entry.score > 1 ? 'points' : 'point'}

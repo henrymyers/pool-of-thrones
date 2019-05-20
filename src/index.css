@@ -18,6 +18,9 @@
 .warning {
   background-color: #eec200 !important;
 }
+.warning-text {
+  color: #eec200 !important;
+}
 
 .danger {
   background-color: #f8645c !important;

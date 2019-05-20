@@ -6,7 +6,7 @@ export const Copydeck: any = {
     cerseilannister: 'Cersei Lannister',
     jaimelannister: 'Jaime Lannister',
     tyrionlannister: 'Tyrion Lannister',
-    daenerystargaryen: 'Daenerys Lannister',
+    daenerystargaryen: 'Daenerys Targaryen',
     yaragreyjoy: 'Yara Greyjoy',
     theongreyjoy: 'Theon Greyjoy',
     eurongreyjoy: 'Euron Greyjoy',
