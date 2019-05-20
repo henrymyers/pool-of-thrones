@@ -13,6 +13,10 @@
   font-weight: 500;
 }
 
+.entry-score {
+  height: auto !important;
+}
+
 .prediction:not(:first-of-type) {
   padding-top: 5px;
 }

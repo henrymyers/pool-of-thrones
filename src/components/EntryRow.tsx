@@ -52,7 +52,7 @@ export const EntryRow = ({ entry, result }: { entry: Entry; result: Result }) =>
                         <span className="entry-rank neutral z-depth-2">{entry.rank}</span>
                     )}
                     <span className="entry-name">{entry.player}</span>
-                    <span className="badge white-text">
+                    <span className="badge white-text entry-score">
                         {entry.score} {entry.score > 1 ? 'points' : 'point'}
                     </span>
                 </div>
